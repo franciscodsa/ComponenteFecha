@@ -1,3 +1,7 @@
+package org.example;
+
+import org.example.exceptions.FechaException;
+
 import java.time.LocalDate;
 
 public interface ComponenteFecha {

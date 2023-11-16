@@ -1,10 +1,16 @@
+package org.example;
+
+import org.example.exceptions.FechaException;
+import org.example.exceptions.FechaImposibleException;
+import org.example.exceptions.FechaIncompletaException;
+import org.example.exceptions.FechaIncorrectaException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 
 public class ComponenteFechaClase extends JPanel implements ComponenteFecha {
 
-    private LocalDate localDate;
     private JComboBox<Integer> diaComboBox;
     private JComboBox<Integer> mesComboBox;
     private JTextField yearTextField;
@@ -33,12 +39,12 @@ public class ComponenteFechaClase extends JPanel implements ComponenteFecha {
 
     @Override
     public LocalDate getDate() throws FechaException {
-        String dia = (String) diaComboBox.getSelectedItem();
-        String mes = (String) mesComboBox.getSelectedItem();
+        String dia = diaComboBox.getSelectedItem().toString();
+        String mes = mesComboBox.getSelectedItem().toString();
         String year = yearTextField.getText();
 
         if (dia == null || mes == null || year.isEmpty()){
-            throw new FechaException("Fecha incompleta");
+            throw new FechaIncompletaException("Fecha incompleta");
         }
 
         int diaInt = Integer.parseInt(dia);
@@ -47,21 +53,23 @@ public class ComponenteFechaClase extends JPanel implements ComponenteFecha {
 
 
         if (diaInt < 1 || mesInt <1 || mesInt > 12 || yearInt < 1){
-            throw new FechaException("Fecha incorrecta");
+            throw new FechaIncorrectaException("Fecha incorrecta");
         }
 
         if (diaInt > 28 && diaInt > obtenerDiasEnMes(mesInt, yearInt)){
-            throw new FechaException("Fecha imposible");
+            throw new FechaImposibleException("Fecha imposible");
         }
 
-        return null;
+        return LocalDate.of(yearInt, mesInt, diaInt);
     }
 
 
     //get desencadena la comprobacion y set establece la fecha que se mostrara inicialmente
     @Override
     public void setDate(int dia, int mes, int year) {
-
+        diaComboBox.setSelectedItem(dia);
+        mesComboBox.setSelectedItem(mes);
+        yearTextField.setText(String.valueOf(year));
     }
 
 

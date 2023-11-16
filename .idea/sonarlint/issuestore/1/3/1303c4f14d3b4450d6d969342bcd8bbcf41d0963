@@ -1,0 +1,10 @@
+
+g	java:S112("FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8›™Š¹½1
+E
+java:S1604""(Make this anonymous inner class a lambda(Èú†8œ™Š¹½1
+f
+java:S3252"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(¢¡´8¬™Š¹½1
+Z
+java:S1128"8Remove this unused import 'org.example.ComponenteFecha'.(Šñ´›øÿÿÿÿ8°™Š¹½1
+R
+java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8°™Š¹½1
